@@ -1,0 +1,65 @@
+Играта започва с квадратна дъска, състояща се от плочки с номера от 1 до N и една празна плочка, представена с цифрата 0. Целта е да се наредят плочките в съответствие с техните номера. Местенето се извършва, като на мястото на празната плочка могат да се преместят плочки отгоре, отдолу, отляво и отдясно. 
+
+На входа се подава число N - броя на плочките с номера (8, 15, 24 и т.н.), число I - индексът на позицията на нулата в решението (при -1 се задава индекс по подразбиране - най-долу в дясно) и след това се въвежда подредбата на дъската. С помощта на алгоритъма IDА* и евристиката "разстояние на Манхатън" да се изведе:
+
+1) На първият ред дължината на "оптималния" път от началото до целевото състояние.
+
+2) Съответните стъпки (на нов ред за всяка една), които се извършват за да се стигне до крайното състояние. Стъпките са left, right, up и down
+
+* Имайте предвид, че не всяка конфигурация на входен пъзел, която подадете, е решима. Дали пъзелът е решим може да се провери като обяснения как това може да се направи могат да бъдат намерини тук. При нерешим пъзел изходът е -1 (тоест няма път).
+
+** Моля, имайте опция за принтиране на времето необходимо за намиране на пътя (без да включвате времето за принтиране на решението) в секунди с точност поне до 2-рия знак след нулата. Принтирането на времето не трябва да се включва при пускане на автоматичните тестове.
+
+*** В прикачените файлове можете да намерите описание на задачата с жабите (Frog Leap Puzzle.pdf), основни тестови пъзели за текущата задача (N Puzzle Inputs and Outputs.pdf) и десктоп инструменти за тестване на двете задачи "Frog Leap Puzzle" (ai-hw-00.exe) и "N Puzzle" (ai-hw-01.exe).
+
+Примерен вход:
+
+8
+
+-1
+
+1 2 3
+4 5 6
+0 7 8
+
+Примерен изход:
+
+2
+
+left
+
+left
+
+________________________________________________________________________________________________________________________________
+
+The game starts with a square board consisting of tiles numbered 1 to N and one blank tile represented by the number 0. The goal is to line up the tiles according to their numbers. Moving is done by moving tiles from the top, bottom, left and right in place of the empty tile.
+
+At the input, a number N is given - the number of tiles with numbers (8, 15, 24, etc.), number I - the index of the position of the zero in the solution (at -1 the default index is set - at the bottom right ) and then the board layout is entered. Using the IDA* algorithm and the "Manhattan distance" heuristic to derive:
+
+1) On the first line, the length of the "optimal" path from the start to the target state.
+
+2) The corresponding steps (on a new line for each) that are performed to reach the final state. The steps are left, right, up and down
+
+* Note that not every input puzzle configuration you submit is solvable. Whether the puzzle is solvable can be checked as explanations of how this can be done can be found here. For an unsolvable puzzle, the output is -1 (that is, there is no path).
+
+** Please have an option to print the time taken to find the path (not including the time to print the solution) in seconds accurate to at least the 2nd digit after zero. Time printing should not be turned on when running the autotests.
+
+*** In the attached files you can find a description of the frog task (Frog Leap Puzzle.pdf), basic test puzzles for the current task (N Puzzle Inputs and Outputs.pdf), and desktop tools for testing the two "Frog Leap Puzzle" tasks (ai-hw-00.exe) and "N Puzzle" (ai-hw-01.exe).
+
+Example input:
+
+8
+
+-1
+
+1 2 3
+4 5 6
+0 7 8
+
+Sample output:
+
+2
+
+left
+
+left
