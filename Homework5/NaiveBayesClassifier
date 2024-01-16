@@ -1,0 +1,33 @@
+Реализирайте Наивен Бейсов Класификатор, класифициращ индивидите като демократи или републиканци, използвайки 16-те атрибута и двата класа от следните данни: 
+
+http://archive.ics.uci.edu/ml/datasets/Congressional+Voting+Records
+
+За тестване на алгоритъма приложете 10-fold крос-валидация (разделете данните по случаен начин на 10 множества и направете 10 обучения и тествания на модела като всеки път използвате едно от множествата за тестване, а останалите 9 за обучение).
+
+Изведете метриката точност (Accuracy) за всяко от 10-те обучения, както и тяхното средно аритметично (за обобщена оценка на класификатора).
+
+
+
+* Данните може да имат нужда от предварителна обработка.
+
+** Справете се с проблемите с нулевите вероятности като използвате "Заглаждане на Лаплас" и логаритъм.
+
+*** Ако решите, можете да замените тази задача с kNN, но ще трябва да имплементирате и kd-tree. Данните може да са тези или Iris. Отново се изисква да изкарате резултата с кръстосана провека, която разделя данните на 10 части. Бонус е ако направите графика за всяко k.
+
+________________________________________________________________________________________________________________________--
+
+Implement a Naive Bayesian Classifier classifying individuals as Democrats or Republicans using the 16 attributes and the two classes from the following data:
+
+http://archive.ics.uci.edu/ml/datasets/Congressional+Voting+Records
+
+To test the algorithm, apply 10-fold cross-validation (split the data randomly into 10 sets and do 10 training and testing of the model, each time using one of the sets for testing and the other 9 for training).
+
+Output the Accuracy metric for each of the 10 training runs, as well as their arithmetic mean (for a summary classifier score).
+
+
+
+* Data may need pre-processing.
+
+** Deal with zero probability problems using "Laplace smoothing" and logarithm.
+
+*** If you choose, you can replace this task with kNN, but you will also need to implement kd-tree. The data can be this or Iris. Again, you are required to cross-validate the result, which divides the data into 10 parts. It's a bonus if you make a graph for each k.
