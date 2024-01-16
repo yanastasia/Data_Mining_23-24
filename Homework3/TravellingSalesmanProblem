@@ -1,0 +1,195 @@
+Да се имплементира генетичен алгоритъм върху една от следните две задачи:
+
+Задача 1 (TSP)
+
+Да се реши задачата за търговския пътник (Traveling Salesman Problem) чрез използване на генетичен алгоритъм (ГА).
+
+За целта на програмата се задава: N - число (N <= 100) - брой точки в пространството (брой градове).
+
+Програмата генерира N точки от двумерна координатна система на случаен принцип.
+
+Търси се най-къс път, който да минава през всяка точка само по един път. За целта нека да се изведе на поне десет стъпки дължината на текущо най-добрия път в популацията.
+
+На 1-та генерация.
+Поне 8 междинни генерации по избор (важното е да се вижда как алгоритъмът оптимизира).
+Последната генерация.
+* Решението трябва да може да работи и с данните в прикачения архив "UK_TSP.zip". Очаква се да може да достига до оптималното решение почти винаги за дадените градове (по принцип ГА не гарантира откриването на оптимално решение, но за тези данни при необходимите настройки следва почти винаги да достига до него).
+** Трябва да може (за защитите) да се изведат имената на градовете от най-добрия открит маршрут в съответната последователност.
+Вход:
+
+N
+
+Изход:
+
+Най-късия открит път за съответната популация
+
+
+
+Примерен вход:
+
+5
+
+Примерен изход:
+
+5252
+3544
+2800
+2378
+2029
+1811
+1632
+1632
+1595
+1595
+
+
+
+Задача 2 (KP)
+
+Дадена е раница с вместимост M килограма и N предмета, всеки от които се характеризира с две числа - тегло mi и стойност ci. Използвайки Генетичен алгоритъм, да се избере такова множество от предмети, чиято сумарна стойност е максимална, а сумата от теглата не надвишава M. За целта нека да се изведе на поне десет стъпки стойността на текущо най-добрата конфигурация от предмети в популацията.
+
+На 1-та генерация.
+Поне 8 междинни генерации по избор (важното е да се вижда как алгоритъмът оптимизира).
+Последната генерация.
+* N < 10 000
+
+** Решението трябва да може да работи и с данните в прикачения архив "KP.zip". Очаква се да може да достига до оптималното решение почти винаги за дадените предмети (по принцип ГА не гарантира откриването на оптимално решение, но за тези данни при необходимите настройки следва почти винаги да достига до него).
+
+Вход:
+
+M, N
+
+N реда определящи mi и ci
+
+Изход:
+
+Максималната възможна такава сума от стойности
+
+
+
+Примерен вход:
+
+5 3
+
+3 2
+
+1 5
+
+2 3
+
+Примерен изход:
+
+5
+
+7
+
+8
+
+8
+
+8
+
+* Забележка: Като използвате за тестови данни тези в файлoвете "KP short test data.txt" и "KP long test data.txt" от прикачения архив "KP.zip", имайте предвид, че първият ред от данните показва максималната вместимост на раницата и броят на предметите (съответно "5000 грама и 24 предмета" и "5000 грама и 200 предмета"). Оптималните раници за двата набора от данни са съответно 1130 и 5119.
+
+
+* Имайте предвид, че която и задача да изберете, тя трябва да работи в рамките на секунди (или поне най-много 1-2 секунда на генерация) и за предложените данни почти винаги да открива оптималното решение. Можете да изберете дори и задачата с N-те царици, но и за нея са подобни очакванията. Също така за нея ще очаквам и съпоставяне с решението от предишната домашна.
+** Относно инструментът за тестване и допълнителна информация за съответните изисквания от към изход в конзолата (които не се очаква да са по различни от тези) ще се дадат в последствие.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+To implement a genetic algorithm on one of the following two tasks:
+
+Task 1 (TSP)
+
+To solve the Traveling Salesman Problem using Genetic Algorithm (GA).
+
+The following is set for the purpose of the program: N - number (N <= 100) - number of points in space (number of cities).
+
+The program generates N points from a two-dimensional coordinate system randomly.
+
+The shortest path that passes through each point only once is sought. For this purpose, let the length of the current best path in the population be output to at least ten steps.
+
+On the 1st generation.
+At least 8 optional intermediate generations (the important thing is to see how the algorithm optimizes).
+The last generation.
+* The solution should also be able to work with the data in the attached "UK_TSP.zip" archive. It is expected to be able to reach the optimal solution almost always for the given cities (in principle, the GA does not guarantee the discovery of an optimal solution, but for this data, with the necessary settings, it should almost always reach it).
+** It should be possible (for defenses) to output the city names from the best route found in the appropriate sequence.
+Login:
+
+N
+
+Output:
+
+The shortest path found for the respective population
+
+
+
+Example input:
+
+5
+
+Sample output:
+
+5252
+3544
+2800
+2378
+2029
+1811
+1632
+1632
+1595
+1595
+
+
+
+Task 2 (KP)
+
+A backpack with a capacity of M kilograms and N items is given, each of which is characterized by two numbers - weight mi and value ci. Using a Genetic Algorithm, select such a set of objects whose total value is maximal and the sum of the weights does not exceed M. For this purpose, let the value of the current best configuration of objects in the population be output in at least ten steps.
+
+On the 1st generation.
+At least 8 optional intermediate generations (the important thing is to see how the algorithm optimizes).
+The last generation.
+* N < 10,000
+
+** The solution should also be able to work with the data in the attached "KP.zip" archive. It is expected to be able to reach the optimal solution almost always for the given subjects (in principle, the GA does not guarantee the discovery of an optimal solution, but for these data, with the necessary settings, it should almost always reach it).
+
+Login:
+
+M,N
+
+N lines specifying mi and ci
+
+Output:
+
+The maximum possible such sum of values
+
+
+
+Example input:
+
+5 3
+
+3 2
+
+1 5
+
+2 3
+
+Sample output:
+
+5
+
+7
+
+8
+
+8
+
+8
+
+* Note: Using for test data those in the files "KP short test data.txt" and "KP long test data.txt" from the attached archive "KP.zip", please note that the first line of the data shows the maximum capacity of the backpack and the number of items (respectively "5000 grams and 24 items" and "5000 grams and 200 items"). The optimal knapsacks for the two data sets are 1130 and 5119, respectively.
+
+
+* Note that whichever task you choose, it should run within seconds (or at least 1-2 seconds per generation at most) and for the given data almost always find the optimal solution. You can even choose the N-queens task, but the expectations are similar for that as well. I will also expect a comparison with the solution from the previous homework.
+** About the test tool and additional information about the relevant console output requirements (which are not expected to be different from these) will be given later.
