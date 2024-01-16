@@ -1,0 +1,166 @@
+import math
+import random
+
+def get_empty_moves(board):
+    empty_moves = []
+    for direction in [1, 2]:
+        for col in range(1, len(board[0]) // 2):
+            for row in range(1, len(board) // 2):
+                move = (direction, col, row)
+                if is_valid_move(board, move):
+                    empty_moves.append(move)
+    return empty_moves
+
+def is_valid_move(board, move):
+    direction, col, row = move
+    N = (len(board[0]) - 1) // 2
+    M = (len(board) - 1) // 2
+
+    if direction == 1:  # Vertical line
+        return 1 <= col <= N and 1 <= row < M
+    elif direction == 2:  # Horizontal line
+        return 1 <= col < N and 1 <= row <= M
+    else:
+        return False
+def initialize_board(N, M):
+    board = [['o' + ' ' * 2 if i < N else 'o' for i in range(N + 1)] for _ in range(2 * M + 1)]
+    for i in range(1, 2 * M, 2):
+        board[i] = [' ' for _ in range(2 * N + 1)]
+    return board
+
+# The initialize_board function creates a 2D list to represent the game board.
+# The outer list represents rows, and the inner lists represent columns. Each
+# element in the inner lists can be either 'o' (representing dots) or ' ' (a space).
+# Currently, it alternates between 'o' and ' ' for each column in the row.
+
+def print_board(board):
+    for row in board:
+        print(' '.join(row))
+    print()
+
+def user_move(board):
+    print("Please enter your move (direction col row):")
+    move = tuple(map(int, input().split()))
+    return move
+
+def apply_move(board, move, player):
+    direction, col, row = move
+
+    if direction == 1:  # Vertical line
+        board[row][2 * col - 2] = '|'
+    elif direction == 2:  # Horizontal line
+        board[2 * row - 2][col - 1] += '-'
+
+def evaluate(board):
+    player_score = 0
+    computer_score = 0
+
+    M = (len(board) - 1) // 2
+    N = (len(board[0]) - 1) // 2
+
+    for row in range(1, 2 * M, 2):
+        for col in range(1, 2 * N, 2):
+            if is_box_completed(board, row, col):
+                if board[row][2 * col - 2] == '|':
+                    player_score += 1
+                elif board[row][2 * col - 2] == '-':
+                    computer_score += 1
+
+    return computer_score - player_score
+def minimax(board, depth, alpha, beta, maximizing_player):
+    if depth == 0 or not get_empty_moves(board):
+        return evaluate(board)
+
+    if maximizing_player:
+        max_eval = -math.inf
+        for move in get_empty_moves(board):
+            new_board = [row.copy() for row in board]
+            apply_move(new_board, move, 1)
+            eval = minimax(new_board, depth - 1, alpha, beta, False)
+            max_eval = max(max_eval, eval)
+            alpha = max(alpha, eval)
+            if beta <= alpha:
+                break
+        return max_eval
+    else:
+        min_eval = math.inf
+        for move in get_empty_moves(board):
+            new_board = [row.copy() for row in board]
+            apply_move(new_board, move, 2)
+            eval = minimax(new_board, depth - 1, alpha, beta, True)
+            min_eval = min(min_eval, eval)
+            beta = min(beta, eval)
+            if beta <= alpha:
+                break
+        return min_eval
+
+def get_best_move(board):
+    best_move = None
+    max_eval = -math.inf
+
+    for move in get_empty_moves(board):
+        new_board = [row.copy() for row in board]
+        apply_move(new_board, move, 1)
+        eval = minimax(new_board, 2, -math.inf, math.inf, False)
+        if eval > max_eval:
+            max_eval = eval
+            best_move = move
+
+    return best_move
+
+def is_box_completed(board, row, col):
+    # Check if the box surrounding the specified cell is completed
+    return (
+        board[row - 1][2 * col - 2] == '|' and  # Left edge
+        board[row][2 * col - 2] == '-' and  # Top edge
+        board[row][2 * col] == '-' and  # Bottom edge
+        board[row + 1][2 * col - 2] == '|'  # Right edge
+    )
+
+def check_for_win(board):
+    M = (len(board) - 1) // 2
+    N = (len(board[0]) - 1) // 2
+
+    for row in range(1, 2 * M, 2):
+        for col in range(1, 2 * N, 2):
+            if is_box_completed(board, row, col):
+                return True
+
+    return False
+def main():
+    print("Enter N, M:")
+    N, M = map(int, input().split())
+    board = initialize_board(N, M)
+    print_board(board)
+
+    print("Who should start? (1 for computer, 2 for player):")
+    player_turn = int(input())
+
+    while True:
+        if player_turn == 2:
+            move = user_move(board)
+            apply_move(board, move, player_turn)
+        else:
+            print("Computer's turn:")
+            computer_move = get_best_move(board)
+            apply_move(board, computer_move, player_turn)
+
+        print_board(board)
+
+        if check_for_win(board):
+            if player_turn == 2:
+                print("Player wins!")
+            else:
+                print("Computer wins!")
+            break
+
+            # Check for a draw
+        if not get_empty_moves(board):
+            print("It's a draw!")
+            break
+
+            # Switch player turn
+        player_turn = 3 - player_turn  # Toggle between 1 and 2
+
+if __name__ == "__main__":
+    main()

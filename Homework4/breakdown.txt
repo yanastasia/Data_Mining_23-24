@@ -1,0 +1,172 @@
+
+1. is_valid_move(board, move):
+
+Purpose: Checks whether a given move is valid on the current game board.
+
+Inputs:
+
+board: The current game board
+move: The proposed move as a tuple of three integers (direction, row, column)
+Output:
+
+True if the move is valid, False otherwise
+
+Breakdown: This function takes the current game board and a proposed move as input. The proposed move is represented as a tuple of three integers:
+
+direction: Indicates the direction of the move (1 for horizontal, 2 for vertical)
+row: The row of the square to which the move connects
+column: The column of the square to which the move connects
+The function checks the following conditions to determine if the move is valid:
+
+direction must be either 1 or 2
+The row and column indices must be within the bounds of the game board
+The square at the specified row and column must be empty ('o')
+If the direction is horizontal, the adjacent square in the same row must also be empty
+If the direction is vertical, the adjacent square in the same column must also be empty
+If all of these conditions are met, the move is considered valid. Otherwise, the function returns False.
+
+This function ensures that only valid moves are allowed, preventing invalid placements that could disrupt the game logic.
+
+
+2. get_next_moves(board, player):
+
+Purpose: Generates a list of all possible valid moves for the given player on the current game board.
+
+Inputs:
+
+board: The current game board
+player: The player number (1 or 2)
+Output:
+
+A list of valid moves as tuples of three integers (direction, row, column)
+Breakdown:
+This function takes the current game board and the player number as input. It iterates through all squares on the board and checks if a valid move can be made for the given player from each empty square. If a valid move is found, it is added to a list of moves. The function returns a list of all valid moves for the given player.
+
+Here's a breakdown of the function:
+
+Initialize an empty list moves to store the valid moves
+
+Iterate over all rows and columns of the game board using nested for loops
+
+For each empty square ('o'), check if a valid move can be made in the horizontal or vertical direction
+
+If a valid move is found, add it to the moves list
+
+Return the list of valid moves
+
+This function ensures that only valid moves are included in the list, preventing suggestions of moves that would not be allowed.
+
+
+3. make_move(board, move, player):
+
+Purpose: Applies the given move to the game board and updates the board state.
+
+Inputs:
+
+board: The current game board
+move: The move to apply as a tuple of three integers (direction, row, column)
+player: The player number (1 or 2)
+Output:
+
+The updated game board
+
+Breakdown: This function takes the current game board, the proposed move, and the player number as input. It applies the move to the game board by modifying the corresponding squares based on the move's direction.
+
+Here's a breakdown of the function:
+
+Update the square at the specified row and column with the player's symbol (1 or 2)
+
+If the move is horizontal (direction 1), update the adjacent square in the same row with the player's symbol
+
+If the move is vertical (direction 2), update the adjacent square in the same column with the player's symbol
+
+Return the updated game board
+
+This function ensures that the game board state is accurately updated after each move, reflecting the changes made by the player or the computer.
+
+
+4. get_winner(board):
+
+Purpose: Checks whether the game has ended and determines the winner if there is one.
+
+Inputs:
+
+board: The current game board
+Output:
+
+The player number (1 or 2) if there is a winner, None if the game is still ongoing or if it ended in a tie
+
+Breakdown: 
+This function takes the current game board as input and checks for winning conditions in four directions: horizontal, vertical, and two diagonals. If a winning line of four connected squares of the same player's symbol is found, the function returns the winner's number (1 or 2). If the game is still ongoing or if it ended in a tie, the function returns None.
+
+
+5. minimax(board, depth, alpha, beta, player):
+
+Purpose: Implements the minimax algorithm with alpha-beta pruning to evaluate the best move for the given player and depth.
+
+Inputs:
+
+board: The current game board
+depth: The current depth in the minimax search
+alpha: The alpha value for alpha-beta pruning
+beta: The beta value for alpha-beta pruning
+player: The player number (1 or 2)
+Output:
+
+The heuristic evaluation of the best move for the given player
+
+Breakdown: This function implements the minimax algorithm with alpha-beta pruning to evaluate the best move for the given player at the current depth. It recursively explores the game tree, evaluating each possible move and updating the alpha and beta values for alpha-beta pruning.
+
+Here's a breakdown of the function:
+
+Check if the current depth is 0, indicating the base case. If so, return the heuristic evaluation of the current board state.
+
+Generate a list of all possible valid moves for the given player on the current game board.
+
+Initialize best_value to a very low value for the maximizing player and a very high value for the minimizing player.
+
+Iterate through each possible move:
+
+Create a copy of the current game board to prevent modifications to the original board.
+Apply the move to the copied board.
+Determine the next player based on the current player.
+Recursively call the minimax function to evaluate the move from the perspective of the next player.
+Update best_value based on the player's perspective (max or min).
+Update alpha and beta values for alpha-beta pruning.
+Check for pruning conditions (beta <= alpha).
+Return the best_value, which represents the heuristic evaluation of the best move for the given player.
+
+6. evaluate(board, player):
+
+Purpose: Evaluates the current game board based on the given player's perspective.
+
+Inputs:
+
+board: The current game board
+player: The player number (1 or 2)
+Output:
+
+A heuristic score representing the current board state for the given player
+
+Breakdown: 
+7. main():
+
+Purpose: Handles the main game loop, including player input, move execution, and game state updates.
+
+Inputs: None
+
+Output: None
+
+Breakdown: This function evaluates the current game board based on the given player's perspective. It assigns points to the player based on the number of connected squares of their symbol in horizontal, vertical, and diagonal directions.
+
+Here's a breakdown of the function:
+
+Initialize score to 0 to store the cumulative score for the given player.
+
+Iterate through all squares on the game board:
+
+For each horizontal row, check if there are four consecutive squares of the same player's symbol. If so, add 10 points to the score.
+For each vertical column, check if there are four consecutive squares of the same player's symbol. If so, add 10 points to the score.
+Check for a diagonal line of four consecutive squares of the same player's symbol from top-left to bottom-right. If so, add 10 points to the score.
+Check for a diagonal line of four consecutive squares of the same player's symbol from bottom-left to top-right. If so, add 10 points to the score.
+Return the score, which represents the heuristic evaluation of the current board state for the given player.
